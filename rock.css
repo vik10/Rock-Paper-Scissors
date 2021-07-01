@@ -1,0 +1,61 @@
+body{background:#52527a;margin:0;padding:0;font-family:sans-serif;}
+.container{padding:25px;display:grid;justify-items:center;}
+.flx{display:flex;align-items:center;}
+.heading{justify-content:space-between;border:2px solid gray;border-radius:5px;padding:10px;max-width:650px;width:100%;}
+.scoreBox h1{margin:0;text-align:center;}
+.scoreBox p{margin:5px;font-size:12px;color:blueviolet;}
+.scoreBox{background:whitesmoke;border-radius:5px;padding:5px;}
+.title p{margin:0;color:white;font-weight:900;letter-spacing:2px;font-size:1em;}
+.box{margin-top:6em;position:relative;height:280px;max-width:400px;width:100%;}
+.b1{background:url('icon-rock.svg') no-repeat center;width:37%;height:130px;border-radius:50%;border:10px solid #ff704d;background-color:white;position:absolute;;box-shadow:inset 0 5px #f2f2f2;box-shadow:0 5px #e65c00;cursor: pointer;}
+.b2{background:url('icon-paper.svg') no-repeat center;width:37%;height:130px;border-radius:50%;border:10px solid #e6e600;background-color:white;position:absolute;top:0;right:0;box-shadow:0 5px #cccc00;cursor: pointer;}
+.b3{background:url('icon-scissors.svg') no-repeat center;width:37%;height:130px;border-radius:50%;border:10px solid #006699;background-color:white;position:absolute;top:60%; box-shadow:0 5px #005580;cursor: pointer;}
+.line1{width:70px;height:14%;background-color:black;position:relative;left:100%;top:43%;margin-left:10px;}
+.line2{width:70px;height:14%;background-color:black;position:relative;left:80%;top:90%;transform:rotate(60deg);transform-origin:0 0;}
+.line3{width:70px;height:14%;background-color:black;position:relative;left:22%;top:99%;transform:rotate(120deg);transform-origin:0 50%;}
+.ruleBtn{justify-self:center;width:120px; padding:10px 30px;border:2px solid whitesmoke;background:transparent;color:whitesmoke;font-weight:900;letter-spacing:2px;border-radius:10px;cursor: pointer;position:fixed;bottom:50px;left:50%;margin-left:-60px;}
+.compH4{position:absolute;top:120%;color:white;text-align:center;}
+.b4{background:#29293d;width:37%;height:150px;border-radius:50%;position:absolute;right:0;top:10px;}
+.b3Box{display:flex;justify-content:center;margin-top:20px;}
+.rotate{animation: rotate .4s infinite linear ;}
+@keyframes rotate {
+    100%{transform:rotateY(360deg); }
+}
+.topright{top:0;left:55%;}
+.alert{text-align:center;color:#ff0066;font-weight:900;}
+.refreshBtn{cursor: pointer;color:purple;text-decoration:underline;}
+.alertMsg{text-align:center;color:white;font-weight:900;font-size:1.3em;margin-top:-20px;}
+.playAgnBtn{padding:15px 30px;border-radius:5px;border:none;font-size:1em;cursor: pointer;}
+.rules{background-color:whitesmoke;position:absolute;top:0;left:0;right:0;bottom:0;padding:30px;max-width:400px;}
+.b1Rule,.b2Rule,.b3Rule{max-width:100px;height:100px;border-color:#666666;background-color:#e6e6e6;box-shadow:none;}
+.arrow1Box{position: relative;}
+.arrow1{font-size:4em;position:absolute;left:40%;margin-top:-10px;color:gray;}
+.arrow2{font-size:4em;position:absolute;top:75%;left:70%;transform:rotate(45deg);transform-origin:0 50%;color:gray;}
+.beats{margin-bottom:0;text-align:center;color:gray;}
+.beats2{position:absolute;top:130%;left:20%;}
+.arrow3{font-size:4em;color:gray;position:absolute;top:-45%;left:80%;transform:rotate(-50deg);transform-origin:0 50%;cursor: pointer;}
+.beats3{position:absolute;top:-45%;right:-80%;}
+.cross{border:none;font-size:2em;background:transparent;cursor: pointer;position:absolute;bottom:50px;left:50%;margin-left:-17px;}
+.ruleH1{text-align:center;margin-top:1.2em;}
+.ruleContainer{position:fixed;top:0;left:0;bottom:0;right:0;background:rgba(0,0,0,0.6);display:none;}
+.boxHeight{height:250;}
+
+@media(min-width:650px){
+    .b1,.b2,.b3{max-width:150px;height:150px;}
+    .b3{top:50%;}
+    .topright{left:60%;top:0;}
+    .box{height:400px;}
+    .line2{top:88%;}
+    .line3{top:96%;}
+    .alertMsg{margin-top:1em;}
+    .rules{left:50%;margin-left:-200px;height:400px;top:50%;margin-top:-200px;}
+    .b1Rule,.b2Rule,.b3Rule{width:100px;height:100px;}
+    .ruleH1{text-align:initial;margin-top:0;}
+    .boxRule{height:300px;width:360px;position:absolute;left:50%;margin-left:-180px;top:50%;margin-top:-100px;}
+    .cross{left:90%;top:6%;height:34px;}
+    .beats3{top:-20%;}
+    .arrow3{left:94%;top:-25%;}
+    .boxHeight{height:250px;}
+}
+
+.sideTop{top:0;left:0;}

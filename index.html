@@ -1,0 +1,187 @@
+<head>
+    <title>Rock-paper-scissors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="rock.css">
+</head>
+<body>
+    <div class="container">
+        <div class="heading flx">
+            <div class="title">
+                <p>ROCK</p>
+                <p>PAPER</p>
+                <p>SCISSORS</p>
+            </div>
+            <div class="scoreBox">
+                <p>SCORE</p>
+                <h1 class="score">0</h1>
+            </div>
+        </div>
+        <div class="box">
+             <div class="b1 circle">
+                <div class="line1"></div>
+                <div class="line2"></div>
+            </div>
+            <div class="b2 circle">
+                <div class="line3"></div>
+            </div>
+           <div class="b3Box"> <div class="b3 circle">
+                
+            </div></div>
+        </div>
+        <button class="ruleBtn">RULES</button>
+        <div class="ruleContainer">
+            <div class="rules"></div>
+        </div>
+    </div>
+    <script>
+
+      
+let box=document.querySelector('.box');
+
+function rockgame(){
+    let circles=document.querySelectorAll('.circle');
+        let b1=document.querySelector('.b1');
+        let b2=document.querySelector('.b2');
+        let b3=document.querySelector('.b3');
+        let score=document.querySelector('.score')
+        let scoreValue=Number(score.innerText);
+        let div1=document.createElement('div')
+                div1.classList.add('alertMsg');
+                box.after(div1);
+
+       for(let item of circles){
+            item.onclick=function(){
+                box.innerHTML='';
+                let random=Math.floor(Math.random()*circles.length);
+            if(item===circles[random]){
+                let div=document.createElement('h1');
+                div.classList.add('alert');
+                div.innerHTML=`Both Picked Same <span class="refreshBtn">Try Again</span>`
+                box.append(div);
+                // let refreshBtn=document.querySelector('.refreshBtn');
+            }    
+            else{
+                box.append(item)
+                item.innerHTML='<h4 class="compH4" style="left:15%">YOU PICKED</h4>';
+                item.classList.add('sideTop')
+                box.insertAdjacentHTML('beforeend','<div class="b4"></div>');
+                let b4=document.querySelector('.b4');
+                b4.classList.add("rotate");
+                setTimeout(function(){b4.classList.remove("rotate")},500);
+               let xy= setInterval(function(){
+                 b4.replaceWith(circles[random]);
+                 circles[random].classList.remove('sideTop');
+                 circles[random].classList.add('topright');
+                 circles[random].innerHTML='<h4 class="compH4">THE HOUSE PICKED</h4>'},500);
+                 setTimeout(function(){clearInterval(xy)},501);
+                 box.classList.add('boxHeight');
+
+                // box.style.cssText="margin-top:3em;height:200px"
+            }
+            let user=circles[random]
+            div1.innerHTML='';
+            div1.innerHTML="<div class='winLose'></div><div><button class='playAgnBtn'>PLAY AGAIN</button>"
+            div1.style.display='none'
+            let winLose=document.querySelector('.winLose');
+            if(item===b1 && user===b3){
+                let yz=setInterval(()=>{div1.style.display='';
+                    score.innerHTML=scoreValue;},500);
+                setTimeout(function(){clearInterval(yz)},501);
+                scoreValue++  ;  
+                winLose.innerHTML="<h1>YOU WIN</h1>";        
+            }
+            else if(item===b1 && user===b2){
+                setInterval(()=>{div1.style.display=''},500);
+                winLose.innerHTML="<h1>YOU LOSE</h1>"
+            }
+            else if(item===b2 && user===b1){
+               let yz=setInterval(()=>{div1.style.display='';score.innerHTML=scoreValue;},500);
+               setTimeout(function(){clearInterval(yz)},501);
+                scoreValue++ ;
+                winLose.innerHTML="<h1>YOU WIN</h1>"
+            }
+            else if(item===b2 && user===b3){
+                setInterval(()=>{div1.style.display=''},500);
+                winLose.innerHTML="<h1>YOU LOSE</h1>"
+            }
+            else if(item===b3 && user===b1){
+                setInterval(()=>{div1.style.display=''},500);
+                winLose.innerHTML="<h1>YOU LOSE</h1>"
+            }
+            else if(item===b3 && user===b2){
+               let yz= setInterval(()=>{div1.style.display='';score.innerHTML=scoreValue;},500);
+               setTimeout(function(){clearInterval(yz)},501);
+                scoreValue++ ;
+                winLose.innerHTML="<h1>YOU WIN</h1>"
+            }
+
+        }
+    }
+}
+    //  ++++++++ rules button
+    let ruleBtn=document.querySelector('.ruleBtn')
+    let container=document.querySelector('.container');
+    let ruleContainer=document.querySelector('.ruleContainer');
+    let rules=document.querySelector('.rules');
+
+    ruleBtn.onclick=function(){
+        ruleContainer.style.display='block'
+        rules.innerHTML=`<h1 class="ruleH1">RULES</h1>
+        <div class="box boxRule" style="justify-self:center;">
+            <div class="b1 b1Rule"><div class="arrow2Box">
+                    <p class="beats beats2">BEATS</P>
+                    <i class="arrow2">&#8594;</i>
+                </div></div>
+            <div arrow1Box><p class="beats">BEATS</P>
+                <i class="arrow1">&#8592;</i></div>
+            <div class="b2 b2Rule"> </div>
+           <div class="b3Box">
+                <div class="b3 b3Rule">
+                    <div arrow3Box><p class="beats beats3">BEATS</P>
+                <i class="arrow3">&#8594;</i></div>
+                </div>
+            </div>
+        </div>
+        <button class="cross">X</button>`
+    // +++++++ cross btn
+    let cross=document.querySelector('.cross');
+    cross.onclick=function(){
+        ruleContainer.style.display='none'
+        }
+    }
+// ++++++++++++ play again button
+
+let heading=document.querySelector('.heading')
+document.body.onclick=function(e){
+    if(e.target.classList.contains('playAgnBtn') 
+){
+        if(box.nextElementSibling.firstElementChild.firstElementChild.innerHTML==="YOU WIN"){
+        winGameContinue();
+            }
+        else{location.reload()}    
+    }
+    if(e.target.classList.contains('refreshBtn')){
+        winGameContinue();
+    }
+}
+rockgame();
+
+// ++++++++++ function for try agin and play again btn
+function winGameContinue(){
+    box.innerHTML='';
+    box.classList.remove('boxHeight')
+    box.nextElementSibling.innerHTML='';
+    box.innerHTML=`<div class="b1 circle">
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                                     </div>
+                                <div class="b2 circle">
+                                    <div class="line3"></div>
+                                </div>
+                                <div class="b3Box"> <div class="b3 circle"> 
+                                </div></div>`;
+                                rockgame();
+}
+
+    </script>
+</body>
